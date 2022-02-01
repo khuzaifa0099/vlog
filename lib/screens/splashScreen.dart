@@ -30,13 +30,13 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-                child: Image.asset("images/splaslogo.PNG")),
+                child: Image.asset("images/flogo.PNG")),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
-            Text("VlogU",style: TextStyle(fontSize: 30),),
+            Text("Exeowe",style: TextStyle(fontSize: 30),),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Text("Record life and share happines",style: TextStyle(fontSize: 20),),
           ],

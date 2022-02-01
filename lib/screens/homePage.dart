@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:vloge_video_editing/screens/bottomTab.dart';
+import 'package:vloge_video_editing/screens/helpSreen.dart';
 import 'package:vloge_video_editing/screens/restoreScreen.dart';
 import 'package:vloge_video_editing/screens/settingScreen.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,14 +22,22 @@ class _HomePageState extends State<HomePage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: FloatingActionButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomTab()));
-              },child: Icon(Icons.camera_alt),),
+              child: FloatingActionButton(
+                elevation: 0,
+                backgroundColor: Color(0xFF4A85AE),
+                onPressed: (){
+               // Navigator.push(context, MaterialPageRoute(builder: (context)=>Gallery()));
+              }
+              ,child: Image.asset("images/filim.PNG"),),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FloatingActionButton(
-                onPressed: (){},child: Icon(Icons.play_circle_fill_sharp),),
+                elevation: 0,
+                backgroundColor: Color(0xFF4A85AE),
+                onPressed: (){
+                 // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyApp()));
+                },child: Icon(Icons.video_collection_rounded),),
             ),
 
           ],
@@ -35,19 +46,19 @@ class _HomePageState extends State<HomePage> {
 
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/himage.PNG"),
-              fit: BoxFit.cover,
+
+              image: AssetImage("images/f1.jpg"),
+              fit: BoxFit.fill,
             ),
           ),
         child: Column(
           children: [
         Padding(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset("images/logo.PNG"),
-            Image.asset("images/dimond.PNG"),
+            Text(""),
 
             Row(
               children: [
@@ -57,7 +68,11 @@ class _HomePageState extends State<HomePage> {
                     },
                     child: Image.asset("images/dimond.PNG")),
                 SizedBox(width: 5,),
-                Image.asset("images/questionmark.PNG"),
+                InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>HelpScreen()));
+                    },
+                    child: Image.asset("images/questionmark.PNG")),
                 SizedBox(width: 5,),
                 InkWell(
                     onTap: (){

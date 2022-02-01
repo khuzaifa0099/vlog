@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vloge_video_editing/privacyPolicy.dart';
 import 'package:vloge_video_editing/screens/homePage.dart';
+import 'package:vloge_video_editing/screens/restoreScreen.dart';
+import 'package:vloge_video_editing/terms_conditionPage.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -22,9 +25,14 @@ class _SettingScreenState extends State<SettingScreen> {
                 padding: const EdgeInsets.all(25),
                 child: Row(
                   children: [
-                    Icon(Icons.arrow_back_ios,
-                      size: 15,
-                      color: Colors.white,
+                    InkWell(
+                     onTap:(){
+                       Navigator.pop(context);
+                     },
+                      child: Icon(Icons.arrow_back_ios,
+                        size: 15,
+                        color: Colors.white,
+                      ),
                     ),
                     SizedBox(
                       width: 100,
@@ -136,7 +144,7 @@ class _SettingScreenState extends State<SettingScreen> {
                               Text(""),
                               InkWell(
                                   onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>RestoreScreen()));
                                   },
                                   child: Image.asset("images/button.PNG")),
                             ],
@@ -177,7 +185,11 @@ class _SettingScreenState extends State<SettingScreen> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Feedback",style: TextStyle(color: Colors.white),),
+                          InkWell(
+                              onTap: () {
+                                ShowInformationDialog(context);
+                              },
+                              child: Text("Feedback",style: TextStyle(color: Colors.white),)),
                         ],
                       ),
                       SizedBox(
@@ -277,7 +289,12 @@ class _SettingScreenState extends State<SettingScreen> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Privacy Policy",style: TextStyle(color: Colors.white),)
+                          InkWell(
+
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>PrivacyPolicyPage()));
+                            },
+                              child: Text("Privacy Policy",style: TextStyle(color: Colors.white),))
                         ],
                       ),
                       SizedBox(
@@ -292,7 +309,11 @@ class _SettingScreenState extends State<SettingScreen> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text("Terms",style: TextStyle(color: Colors.white),)
+                          InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>TermsconditionPage()));
+                              },
+                              child: Text("Terms",style: TextStyle(color: Colors.white),))
                         ],
                       ),
                       SizedBox(
@@ -324,6 +345,64 @@ class _SettingScreenState extends State<SettingScreen> {
           ),
         ),
       ),
+    );
+  }
+  Future<void> ShowInformationDialog(BuildContext) async{
+    return await showDialog(context: context,
+        builder: (context){
+          return AlertDialog(
+            content:
+            Container(
+              height: 100,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+
+                      hintText: 'your suggestion is very important to us.',
+                    ),
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+
+                        ],
+
+                      ),
+                      Row(
+                        children: [
+                          InkWell(
+                              onTap: (){
+                                Navigator.pop(context);
+                              },
+                              child: Text("Cancel",style: TextStyle(color: Colors.blue),)),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Submitted",style: TextStyle(color: Colors.grey),)
+                        ],
+
+                      ),
+
+                    ],
+
+                  ),
+
+                ],
+              ),
+            ),
+            actions: [
+              // FlatButton(onPressed: (){
+              //   Navigator.push(context, MaterialPageRoute(builder: (context)=>UploadPic()));
+              // },
+              //     child: Text("3 Days Free"))
+            ],
+          );
+        }
     );
   }
 }

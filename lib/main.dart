@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vloge_video_editing/screens/bottomTab.dart';
 import 'package:vloge_video_editing/screens/homePage.dart';
 import 'package:vloge_video_editing/screens/restoreScreen.dart';
 import 'package:vloge_video_editing/screens/splashScreen.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(GetMaterialApp(
     home: MyApp(),
     debugShowCheckedModeBanner: false,
   ));
